@@ -18,9 +18,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastname',
         'email',
         'password',
         'type',
+        'phone',
     ];
 
     /**
@@ -46,7 +48,17 @@ class User extends Authenticatable
         ];
     }
 
-    public function image() {
+    public function image()
+    {
         return $this->morphOne(Image::class, 'imageable');
+    }
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function service_requests()
+    {
+        return $this->hasMany(ServiceRequest::class);
     }
 }

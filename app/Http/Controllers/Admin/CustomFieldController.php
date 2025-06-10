@@ -23,41 +23,51 @@ class CustomFieldController extends Controller
 
     public function store(Request $request)
     {
-            $request->validate([
-                'service_id' => 'required',
-                'label_en'      => 'required',
-                'label_ar'      => 'required',
-                'name'       => 'required',
-                'type' => 'required|in:text,textarea,number,date,time,file,checkbox,select,radio',
-                'options'    => 'nullable|array',
-                'required'   => 'required',
-            ]);
+        // Validation
+        $request->validate([
+            'service_id' => 'required|exists:services,id',
+            'label_en'   => 'required|string|max:255',
+            'label_ar'   => 'required|string|max:255',
+            'name'       => 'required|string|max:255|unique:custome_fields,name',
+            'type'       => 'required|in:text,textarea,number,date,time,file,checkbox,select,radio',
+            'options_en' => 'nullable|array',
+            'options_ar' => 'nullable|array',
+            'required'   => 'required|boolean',
+        ]);
 
-            $label = [ 
-                'en' => $request->label_en,
-                'ar' => $request->label_ar,
+        // Prepare labels for both languages
+        $label = [
+            'en' => $request->label_en,
+            'ar' => $request->label_ar,
+        ];
+
+        // Prepare options if the type requires them
+        $options = null;
+        if (in_array($request->type, ['select', 'checkbox', 'radio'])) {
+            $options = [
+                'en' => array_values(array_filter($request->options_en ?? [])),
+                'ar' => array_values(array_filter($request->options_ar ?? [])),
             ];
+        }
 
-            $data = [
-                'service_id' => $request->service_id,
-                'label'      => json_encode($label, JSON_UNESCAPED_UNICODE),
-                'name'       => $request->name,
-                'type'       => $request->type,
-                'required'   => $request->required,
-            ];
+        // Data to insert
+        $data = [
+            'service_id' => $request->service_id,
+            'label'      => json_encode($label, JSON_UNESCAPED_UNICODE),
+            'name'       => $request->name,
+            'type'       => $request->type,
+            'required'   => $request->required,
+            'options'    => $options ? json_encode($options, JSON_UNESCAPED_UNICODE) : null,
+        ];
 
-            if (in_array($request->type, ['select', 'checkbox', 'radio']) && $request->has('options')) {
-                $data['options'] = json_encode(array_filter($request->options));
-            } else {
-                $data['options'] = null;
-            }
+        // Create record
+        CustomeFields::create($data);
 
-            CustomeFields::create($data);
-
-            return redirect()->route('admin.custome_fields.index')
+        return redirect()->route('admin.custome_fields.index')
             ->with('msg', __('admin.formFieldAdded'))
             ->with('type', 'success');
     }
+
 
     public function edit(CustomeFields $customeField)
     {
@@ -65,38 +75,63 @@ class CustomFieldController extends Controller
         return view('admin.custom_fields.edit', compact('services', 'customeField'));
     }
 
-   public function update(Request $request, CustomeFields $customeField)
-{
-    $label = [
-        'en' => $request->label_en,
-        'ar' => $request->label_ar,
-    ];
+    public function update(Request $request, CustomeFields $customeField)
+    {
+        // Validation
+        $request->validate([
+            'service_id' => 'required|exists:services,id',
+            'label_en'   => 'required|string|max:255',
+            'label_ar'   => 'required|string|max:255',
+            'name'       => 'required|string|max:255|unique:custome_fields,name,' . $customeField->id,
+            'type'       => 'required|in:text,textarea,number,date,time,file,checkbox,select,radio',
+            'options_en' => 'nullable|array',
+            'options_ar' => 'nullable|array',
+            'required'   => 'required|boolean',
+        ]);
 
-    $data = [
-        'service_id' => $request->service_id,
-        'label'      => json_encode($label, JSON_UNESCAPED_UNICODE),
-        'name'       => $request->name,
-        'type'       => $request->type,
-        'required'   => $request->required == 1 ? true : false,
-        'options'    => null,
-    ];
+        // إعداد الحقول متعددة اللغة
+        $label = [
+            'en' => $request->label_en,
+            'ar' => $request->label_ar,
+        ];
 
-    if (in_array($request->type, ['select', 'checkbox', 'radio']) && is_array($request->options)) {
-        $filteredOptions = array_filter($request->options, fn($opt) => trim($opt) !== '');
-        $data['options'] = json_encode(array_values($filteredOptions), JSON_UNESCAPED_UNICODE);
+        // تهيئة البيانات للتحديث
+        $data = [
+            'service_id' => $request->service_id,
+            'label'      => json_encode($label, JSON_UNESCAPED_UNICODE),
+            'name'       => $request->name,
+            'type'       => $request->type,
+            'required'   => (bool) $request->required,
+            'options'    => null,
+        ];
+
+        // حفظ الخيارات فقط لأنواع معينة من الحقول
+        if (
+            in_array($request->type, ['select', 'checkbox', 'radio']) &&
+            is_array($request->options_en) && is_array($request->options_ar)
+        ) {
+            $options = [
+                'en' => array_values(array_filter($request->options_en, fn($opt) => trim($opt) !== '')),
+                'ar' => array_values(array_filter($request->options_ar, fn($opt) => trim($opt) !== '')),
+            ];
+
+            $data['options'] = json_encode($options, JSON_UNESCAPED_UNICODE);
+        }
+
+        // تحديث السجل
+        $customeField->update($data);
+
+        return redirect()->route('admin.custome_fields.index')
+            ->with('msg', __('admin.formFieldEdit'))
+            ->with('type', 'info');
     }
-
-    $customeField->update($data);
-
-    return redirect()->route('admin.custome_fields.index')->with('msg', __('admin.formFieldEdit'))->with('type', 'info');
-}
 
 
     public function destroy(CustomeFields $customeField)
     {
         $customeField->delete();
         return redirect()->route('admin.custome_fields.index')
-        ->with('msg', __('admin.formFieldDele'))
-        ->with('type', 'danger');
+            ->with('msg', __('admin.formFieldDele'))
+            ->with('type', 'danger');
     }
 }

@@ -10,26 +10,34 @@ use App\Traits\Trans;
 class Category extends Model
 {
     use HasFactory, Trans;
-    
+
     protected $guarded = [];
 
-    public function image() {
+    public function image()
+    {
         return $this->morphOne(Image::class, 'imageable');
     }
 
-     public function getImgPathAttribute() {
-        
-       $src = 'https://via.placeholder.com/100x80'; 
-       if($this->image) {
-           $src = asset('images/'.$this->image->path);
-       }
+    // Many to Many Provider => Provider
 
-       return $src;
-
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 
-    public function services() {
+    public function getImgPathAttribute()
+    {
+
+        $src = asset('default.jpg');
+        if ($this->image) {
+            $src = asset('images/' . $this->image->path);
+        }
+
+        return $src;
+    }
+
+    public function services()
+    {
         return $this->hasMany(Service::class);
     }
-    
 }

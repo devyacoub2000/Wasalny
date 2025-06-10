@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عندك - تفاصيل الخدمة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-slate-50" style="font-family: 'Cairo', sans-serif;">
+    <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- Header -->
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] px-10 py-3">
+                <div class="flex items-center gap-8">
+                    <div class="flex items-center gap-4 text-[#0d141c]">
+                        <div class="size-4">
+                            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_6_535)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                                        fill="currentColor"></path>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_6_535">
+                                        <rect width="48" height="48" fill="white"></rect>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">عندك</h2>
+                    </div>
+                    <div class="flex items-center gap-9">
+                        <a class="text-[#0d141c] text-sm font-medium leading-normal" href="index.html">الرئيسية</a>
+                        <a class="text-[#0d141c] text-sm font-medium leading-normal active"
+                            href="services.html">الاقسام</a>
+                        <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#">من نحن</a>
+                        <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#">اتصل بنا</a>
+                    </div>
+                </div>
+                <div class="flex flex-1 justify-end gap-8">
+                    <label class="flex flex-col min-w-40 !h-10 max-w-64">
+                        <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                            <div
+                                class="text-[#49739c] flex border-none bg-[#e7edf4] items-center justify-center pl-4 rounded-l-lg border-r-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                                    viewBox="0 0 256 256">
+                                    <path
+                                        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <input placeholder="بحث"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-full placeholder:text-[#49739c] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                                value="" />
+                        </div>
+                    </label>
+                    <!-- <button
+                        class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#e7edf4] text-[#0d141c] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+                        <div class="text-[#0d141c]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                                viewBox="0 0 256 256">
+                                <path
+                                    d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z">
+                                </path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBSTDcCX4BCwkTJ9Z7JLc57SOFzt8MRoVpSFVwiKGeyjxZia4Llgg5lMrRmFKIbZtnEnQtJVNEp_K_Tk7F1-UIOsiJZ0fvjqJ2i9laTpXAVAe0-6UODGFwsSI3_GuwSlXaXZ-K2Zjvd9Tu1gAsckXkeN9Wb56EKNqxxkBEpX7mtbbo2CGespZvEZrApPJFMaJ0S6FwLUXvQ_JFq5BOBcT6uvi-mnFGc0z-gOmKHdG-hZltFuQtrcmv6a3iQAZjswUPPQ-16pAjifjaJ');">
+                    </div> -->
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <div class="px-40 flex flex-1 justify-center py-5">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                    <!-- Breadcrumb -->
+                    <div class="flex flex-wrap gap-2 p-4">
+                        <a class="text-[#49739c] text-base font-medium leading-normal" href="services.html">الخدمات</a>
+                        <span class="text-[#49739c] text-base font-medium leading-normal">/</span>
+                        <span class="text-[#0d141c] text-base font-medium leading-normal">نقل العفش</span>
+                    </div>
+
+                    <!-- Service Title and Description -->
+                    <div class="flex flex-wrap justify-between gap-3 p-4">
+                        <div class="flex min-w-72 flex-col gap-3">
+                            <p class="text-[#0d141c] tracking-light text-[32px] font-bold leading-tight">خدمة نقل العفش
+                            </p>
+                            <p class="text-[#49739c] text-sm font-normal leading-normal">
+                                خدمة نقل عفش موثوقة وفعالة للعملاء السكنيين والتجاريين. يضمن فريقنا ذو الخبرة التعامل مع
+                                متعلقاتك بعناية وتسليمها بأمان إلى موقعك الجديد.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Service Images -->
+                    <div class="flex w-full grow bg-slate-50 @container p-4">
+                        <div
+                            class="w-full gap-1 overflow-hidden bg-slate-50 @[480px]:gap-2 aspect-[3/2] rounded-lg grid grid-cols-[2fr_1fr_1fr]">
+                            <div class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none row-span-2"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPdh6wbzehocj3c_JwlrM5QVczdrCoIcwJ7RqjvbcxB0pDIsrcwnHjeRTvYQx2BKDlF0DtzY3amksp4k9B1Jk-nATP8QpzdHUuNH9tY5pGo_kp4lhMcL71_seT27YdKrl5Lq7ZJkuD2xNpFjC1Gdowt5FDz5y7fvXRPrvBP-oQMKYVb4PrnqXyPQGVmoe_OuKBNk91xvSnSy1vb5ERlETx2Diy0GtC7AIbWfOGDdaLEhvn4-MREoQnXTsLZmre9ljebPuzj-V-HYx2');">
+                            </div>
+                            <div class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none col-span-2"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPXapjR6L9N5pGmPyRHMPH9i87P3cyOuDDXtNZ8czf-83e7xWnCnIBf8KT-C9eCDv4D_0uwhFVyTA9SltUcC3IjIeWIwpPLh6Iuws6q-_jwFmnW387anGNH3n43uOx0T6hBR6TjvEnO0v9k_y60qayxr-FSjn6NWpwmXBHnzRQIrs9NmJ-WIhllKF-N6OdmxxB3c9Btsp2tuEVoVh_bEiD0houmxTP6wnwhunCawHw7RekQr86mOmxUjz2lxk3EdEOIlWa5mmt2VyX');">
+                            </div>
+                            <div class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none col-span-2"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJqvncTgOzl2fv-1aKGZzm9sTNIVDyJ19letjTl4pAhK8_PaoHrLfsIZ_VTPh2Uz1QJQdjb9wNsIw383kVtBnGUK8IViCDRZfHWs4hXHh-JkkyeqV1VJrAaAinLLPlE1mZ2n38aK3r5hIL2LrQSmMDku5FSdpFzSFc-IFs0J5GNapeHdq0Xv79YWJfUVYJ6Je-lXA_D8PAlGKHEzJC9eeaeOirvKf_hjb1fSnArutKE27gxQW86IlwCGWtUSGeEskmbqXW037w88ty');">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Description -->
+                    <h2 class="text-[#0d141c] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+                        وصف الخدمة</h2>
+                    <p class="text-[#0d141c] text-base font-normal leading-normal pb-3 pt-1 px-4">
+                        تقدم خدمة نقل العفش لدينا حلولاً شاملة لجميع احتياجات النقل الخاصة بك. نحن نتعامل مع كل شيء من
+                        التغليف والتحميل إلى النقل والتفريغ، مما يضمن عملية نقل سلسة وخالية من التوتر. فريقنا مجهز
+                        للتعامل مع جميع أنواع الأثاث، بما في ذلك القطع الحساسة والكبيرة. كما نقدم خدمات إضافية مثل تجميع
+                        وتفكيك الأثاث، وحلول التخزين.
+                    </p>
+
+                    <!-- Request Form -->
+                    <h2 class="text-[#0d141c] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+                        طلب الخدمة</h2>
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d141c] text-base font-medium leading-normal pb-2">الاسم</p>
+                            <input placeholder="أدخل اسمك"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-14 placeholder:text-[#49739c] p-4 text-base font-normal leading-normal"
+                                value="" />
+                        </label>
+                    </div>
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d141c] text-base font-medium leading-normal pb-2">البريد الإلكتروني</p>
+                            <input placeholder="أدخل بريدك الإلكتروني"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-14 placeholder:text-[#49739c] p-4 text-base font-normal leading-normal"
+                                value="" />
+                        </label>
+                    </div>
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d141c] text-base font-medium leading-normal pb-2">رقم الهاتف</p>
+                            <input placeholder="أدخل رقم هاتفك"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-14 placeholder:text-[#49739c] p-4 text-base font-normal leading-normal"
+                                value="" />
+                        </label>
+                    </div>
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d141c] text-base font-medium leading-normal pb-2">العنوان</p>
+                            <input placeholder="أدخل عنوانك"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-14 placeholder:text-[#49739c] p-4 text-base font-normal leading-normal"
+                                value="" />
+                        </label>
+                    </div>
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d141c] text-base font-medium leading-normal pb-2">تاريخ النقل</p>
+                            <input placeholder="اختر تاريخ النقل"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-14 placeholder:text-[#49739c] p-4 text-base font-normal leading-normal"
+                                value="" />
+                        </label>
+                    </div>
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d141c] text-base font-medium leading-normal pb-2">ملاحظات إضافية</p>
+                            <textarea placeholder="أدخل أي ملاحظات إضافية"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none min-h-36 placeholder:text-[#49739c] p-4 text-base font-normal leading-normal"></textarea>
+                        </label>
+                    </div>
+                    <div class="flex px-4 py-3 justify-end">
+                        <button
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0c7ff2] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]">
+                            <span class="truncate">إرسال الطلب</span>
+                        </button>
+                    </div>
+
+                    <!-- Pricing -->
+                    <h2 class="text-[#0d141c] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+                        الأسعار</h2>
+                    <p class="text-[#0d141c] text-base font-normal leading-normal pb-3 pt-1 px-4">
+                        أسعارنا شفافة وتنافسية. نقدم عروض أسعار مخصصة بناءً على حجم النقل والمسافة وأي خدمات إضافية
+                        مطلوبة. اتصل بنا للحصول على تقدير مجاني.
+                    </p>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

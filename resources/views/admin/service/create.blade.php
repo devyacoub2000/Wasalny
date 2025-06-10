@@ -11,7 +11,8 @@
 
          <div class="mb-3">       
            <label for="name_en">  Service Name English </label>
-           <input type="text" name="name_en" placeholder="Name English" value="{{old('name_en')}}" class="form-control @error('name_en') is-invalid @enderror">
+           <input type="text" name="name_en" placeholder="Name English" 
+           value="{{old('name_en')}}" class="form-control @error('name_en') is-invalid @enderror">
            @error('name_en')
              <small class="invalid-feedback"> {{$message}} </small>
            @enderror

@@ -19,7 +19,8 @@ return [
     'catDanger' => 'Category deleted successfully',
     'name' => 'Name',
     'img' => 'Image',
-    'notFound' => 'No data found',
+    'notFound' => 'No Data Found',
+    'notFoundS' => 'No Services Found',
     'save' => 'Save',
     'service' => 'Services',
     'formFieldAdded' => 'Field added successfully',
@@ -43,7 +44,7 @@ return [
     'addOption' => 'Add Option',
     'service' => 'Service',
     'actions' => 'Actions',
-    
+
     'placeholder_label_en' => 'Enter label in English',
     'placeholder_label_ar' => 'Enter label in Arabic',
     'placeholder_field_name' => 'Enter the field name',
@@ -51,4 +52,10 @@ return [
     'create_F' => 'Create Field',
     'create_C' => 'Create Category',
     'create_S' => 'Create Service',
+    'option_en' => 'English Option',
+    'option_ar' => 'Arabic Option',
+    'confirm_delete' => 'Are u Sure ? ',
+    'orders' => 'Orders',
+    'customeName' => 'Customer Name',
+    'action' => 'Action',
 ];

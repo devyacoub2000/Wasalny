@@ -25,7 +25,6 @@ class CategoryController extends Controller
     public function create()
     {
         return view('admin.category.create');
-        
     }
 
     /**
@@ -34,35 +33,34 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-              'name_en' => 'required', 
-              'name_ar' => 'required', 
-              'image' => 'required|image', 
+            'name_en' => 'required',
+            'name_ar' => 'required',
+            'image' => 'required|image',
         ]);
 
-        
+
         $data = $request->except('_token', 'image');
-        
-         $name = [
-               'en' => $request->name_en,
-               'ar' => $request->name_ar,
-          ];
+
+        $name = [
+            'en' => $request->name_en,
+            'ar' => $request->name_ar,
+        ];
 
         $category = Category::create([
-              'name' => json_encode($name, JSON_UNESCAPED_UNICODE),
+            'name' => json_encode($name, JSON_UNESCAPED_UNICODE),
         ]);
 
         $img = $request->File('image');
-        $img_name = rand().time().$img->getClientOriginalName();
+        $img_name = rand() . time() . $img->getClientOriginalName();
         $img->move(public_path('images'), $img_name);
         $category->image()->create([
             'path' => $img_name,
         ]);
 
 
-      return redirect()->route('admin.category.index')
-      ->with('msg', __('admin.catAdd'))
-      ->with('type', 'success');
- 
+        return redirect()->route('admin.category.index')
+            ->with('msg', __('admin.catAdd'))
+            ->with('type', 'success');
     }
 
     /**
@@ -78,7 +76,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-         return view('admin.category.edit', compact('category'));
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -86,60 +84,55 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-       $request->validate([
-              'name_en' => 'required', 
-              'name_ar' => 'required', 
+        $request->validate([
+            'name_en' => 'required',
+            'name_ar' => 'required',
         ]);
 
-        
+
         $data = $request->except('_token', 'image');
-        
-         $name = [
-               'en' => $request->name_en,
-               'ar' => $request->name_ar,
-          ];
+
+        $name = [
+            'en' => $request->name_en,
+            'ar' => $request->name_ar,
+        ];
 
         $category->update([
-              'name' => json_encode($name, JSON_UNESCAPED_UNICODE),
+            'name' => json_encode($name, JSON_UNESCAPED_UNICODE),
         ]);
 
-        if($request->hasFile('image')) {
-            if($category->image) {
-                File::delete(public_path('images/'.$category->image->path));
+        if ($request->hasFile('image')) {
+            if ($category->image) {
+                File::delete(public_path('images/' . $category->image->path));
                 $category->image()->delete();
-            } 
+            }
             $img = $request->File('image');
-            $img_name = rand().time().$img->getClientOriginalName();
+            $img_name = rand() . time() . $img->getClientOriginalName();
             $img->move(public_path('images'), $img_name);
             $category->image()->create([
                 'path' => $img_name,
             ]);
-
         }
 
 
-      return redirect()->route('admin.category.index')
-      ->with('msg',__('admin.catEdit'))
-      ->with('type', 'info');
+        return redirect()->route('admin.category.index')
+            ->with('msg', __('admin.catEdit'))
+            ->with('type', 'info');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Category $category)
-    {   
-        if($category->image) {
-            File::delete(public_path('images/'.$category->image->path));
+    {
+        if ($category->image) {
+            File::delete(public_path('images/' . $category->image->path));
             $category->image()->delete();
-        } 
-      
-         $category->delete();  
-          return redirect()->route('admin.category.index')
-      ->with('msg',__('admin.catDanger'))
-      ->with('type', 'info');
+        }
+
+        $category->delete();
+        return redirect()->route('admin.category.index')
+            ->with('msg', __('admin.catDanger'))
+            ->with('type', 'danger');
     }
 }
-
-
-
-

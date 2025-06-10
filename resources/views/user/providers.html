@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans+Arabic:wght@400;500;700;900&amp;family=Plus+Jakarta+Sans:wght@400;500;700;800"
+    />
+    <title>عندك - مزودي الخدمات</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans Arabic", sans-serif;'>
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- Header -->
+            <header class="header-container flex items-center justify-between whitespace-nowrap px-10 py-3">
+                <div class="flex items-center gap-4 text-[#0d141c]">
+                    <div class="size-4">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_6_535)">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6_535"><rect width="48" height="48" fill="white"></rect></clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">عندك</h2>
+                </div>
+                <div class="flex flex-1 justify-end gap-8">
+                    <div class="flex items-center gap-9">
+                        <a class="nav-link text-[#0d141c] text-sm font-medium leading-normal" href="index.html">الرئيسية</a>
+                        <a class="nav-link text-[#0d141c] text-sm font-medium leading-normal" href="services.html">الخدمات</a>
+                        <a class="nav-link text-[#0d141c] text-sm font-medium leading-normal" href="providers.html">مزودي الخدمات</a>
+                        <a class="nav-link text-[#0d141c] text-sm font-medium leading-normal" href="contact.html">تواصل معنا</a>
+                    </div>
+                    <button
+                        class="btn-primary flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]"
+                    >
+                        <span class="truncate">احصل على عرض سعر</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <div class="px-40 flex flex-1 justify-center py-5">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                    <div class="flex flex-wrap justify-between gap-3 p-4">
+                        <p class="text-[#0d141c] tracking-light text-[32px] font-bold leading-tight min-w-72">مزودي الخدمات</p>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div class="px-4 py-3">
+                        <label class="flex flex-col min-w-40 h-12 w-full">
+                            <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                                <div class="text-[#49739c] flex border-none bg-[#e7edf4] items-center justify-center pl-4 rounded-l-lg border-r-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                                        <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                                    </svg>
+                                </div>
+                                <input placeholder="البحث عن مزودي الخدمات" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-full placeholder:text-[#49739c] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" value="" />
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Featured Providers -->
+                    <h2 class="text-[#0d141c] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">المزودون المميزون</h2>
+                    <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                        <div class="flex items-stretch p-4 gap-3">
+                            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+                                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCekjmgkiPkGzM3GyLctjiN_j05iTy_mjzCk2NaGUIVaDmmeDrn4KQE-nk36OLTARNvhqFjEb735pt2woCFNOkCjJYt-11_-f6JBwqOsOXR--aX6TvM7ysJ1Y6ou8NYnAvF6w4mgXgeLzf1Z9l9i_HuYVulcwB2s_hFyywF6rp2BbUTjp88sgn243PeSFjDy6H7fReItKnkNtUcmCSha0n4yAcxjDDveWk-qz0glvVes0G_st2_xqcAYRvkQaP8IrZen68dhBwkbFA5');"></div>
+                                <p class="text-[#0d141c] text-base font-medium leading-normal">نقل العفش</p>
+                            </div>
+                            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+                                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7tQrbh6cm9YLUzA2l6Imd_pDAXr7D2xNUk4cuZlG-k6Of8l9M9D54PQT4aNSJQ0RTaoyQVAP-QrD5lTFdIL5mJKkb7dgQJFEdms0l6WdN_NNFLM4whfSuIY9rtTCc1pZlLgkLOC9G-_gLYwAh0ELGtVXh4E5u9fdEq11PQWNPLvEzx_a1JzCEiVfkz_0mavFyoDBGbogvxWL6D3bx7H8sXFPDV5rOZWMRljhKgG0yhRRl5XODY2wy5hBoHFDTxwUWtmG4GPvT6uIB');"></div>
+                                <p class="text-[#0d141c] text-base font-medium leading-normal">ميكانيكي السيارات</p>
+                            </div>
+                            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+                                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDFY6RsEG3FjQtQ04M6xLFsIOKA-AeUtIMYwq1Msgs3OuqMf11qr9IoW2DZI2u2sFCuvpCHH7KHffp2rzwzjOzqESIbmvV91dBRwpsk42nZE7NATXuPTJrX8PkwcbaUrSwBA_Az0Gd0xh8P8BO8DvqgA_5nN8Uhx15mTGY3SsLsM-YiS7s1gK5rr9Bxbuza87uBjgIvW-kRUDTm2K4mIPC8Uv7JdC3T5yYPaFPXBe8Eys6TtcdPX4VwdjMNl36AXFXKYigYKce-qINU');"></div>
+                                <p class="text-[#0d141c] text-base font-medium leading-normal">تأجير المعدات الثقيلة</p>
+                            </div>
+                            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+                                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiXDpiqjFEoyoS_E-xdd_zmyq1Ld385QQXHo_ZwK50CQMnffOyDNze4bAVNlDb7KtOtnFKrB-jbd7Naz-ISw6v2iU_4VxLei1SiHcnkxEktT5anYBeaYupD4JCpbYCyxGf2w5C-vITjJA1C63smcm8ATjsXDPvzGzv-MDOH_OdnGVfzNTJJAzqTU5I5_E6DOnEMLsVeBSatmllOXQMxbEjfpz7S-I3b6S_m7zA--VHYbKwJuXZg7xyCPRd4daMZRcbwMxiQv3hNb2K');"></div>
+                                <p class="text-[#0d141c] text-base font-medium leading-normal">خزانات المياه</p>
+                            </div>
+                            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+                                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCjafDTSMLXn7n-2vtdBnZuvZJJWNf3d4cKq4_aaiq71MQKBA6tea-w08WQT-qMdc86DUqbdzFW6Dd_SX99TH0WjhtYNCY3H2kWaMRaCXovusjS4UzkGy_wgRucHBvJEcxcKEF2QwXKNtp-1-On_rfwb3x1pYbu1pz-GGIz_5xpOibkCzGrWMJJF9n232PBvr8jyLtITBsVacihJ-CXr_QvqMgycfmlWw3g4j9J4gl0Tzdqwh1quzc0zv7u1ThUa0nY4FKAY49i49m5');"></div>
+                                <p class="text-[#0d141c] text-base font-medium leading-normal">تنظيم الفعاليات</p>
+                            </div>
+                            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+                                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6Pq7JtNr6PMKJAdFYiT-DYuMVJHzDyv-gNJUnupwBKS6BFEbz_kxVV6liLEe0eVFnMq8dHTHzxGZv3et0evqFaq-iTdpd6VL4wnattHrA2KdCpGaoZS_jrAnwTnaXcak_nTL4o5Ul52eMQTXYntVaE1kb0tt2wwk4nZLfqpvMZN51uagKlR-LOf4Ar6W8FtoYxY9C9cUB_f0u3RM73rhT3p2QJeyjhmsHMZdbVXuWK-A1ZGSQEnU0fmluDjyuhYcMihy9l9yPE0wI');"></div>
+                                <p class="text-[#0d141c] text-base font-medium leading-normal">أنظمة المراقبة</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- All Providers -->
+                    <h2 class="text-[#0d141c] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">جميع المزودين</h2>
+                    
+                    <!-- Provider Cards -->
+                    <div class="p-4">
+                        <div class="flex items-stretch justify-between gap-4 rounded-lg bg-slate-50 p-4 shadow-[0_0_4px_rgba(0,0,0,0.1)]">
+                            <div class="flex flex-[2_2_0px] flex-col gap-4">
+                                <div class="flex flex-col gap-1">
+                                    <p class="text-[#0d141c] text-base font-bold leading-tight">نقل موثوق</p>
+                                    <p class="text-[#49739c] text-sm font-normal leading-normal">خدمات نقل العفش مع تقييمات ممتازة من العملاء.</p>
+                                </div>
+                                <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-[#e7edf4] text-[#0d141c] text-sm font-medium leading-normal w-fit">
+                                    <span class="truncate">عرض الملف الشخصي</span>
+                                </button>
+                            </div>
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-1" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCsTZHLqCsYDlFnrYFvmWqAsXjKhMcIlBV_fy_XdVjqI1VbXTacKSLFhNz-oC-mifALgA80HNSr_yl4xkEUIXYncMX-vf928aUkDfY-XxwpuRLWMzSf_kriXf4vo8GnUHdiKWYfTxChqeyCWJB3BNcRdxpZ9Md9_N8TTaNiE-VbDkZ7RInmEaswSwBpzAT-V80h1X7PLa9BvKsZNjHEIMu495ZJNyqjVig377P6wxbWPVC0jy25_U-C-gXfv5UN6L7bH1Pl9a0MKmoj');"></div>
+                        </div>
+                    </div>
+
+                    <!-- More Provider Cards -->
+                    <!-- Repeat the provider card structure for other providers -->
+
+                    <!-- Provider Registration Section -->
+                    <div class="@container">
+                        <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
+                            <div class="flex flex-col gap-2 text-center">
+                                <h1 class="text-[#0d141c] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">
+                                    هل أنت مزود خدمة؟
+                                </h1>
+                                <p class="text-[#0d141c] text-base font-normal leading-normal max-w-[720px]">
+                                    انضم إلى منصتنا واتصل بالعملاء الذين يبحثون عن خدماتك.
+                                </p>
+                            </div>
+                            <div class="flex flex-1 justify-center">
+                                <div class="flex justify-center">
+                                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#0c7ff2] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow">
+                                        <span class="truncate">التسجيل كمزود خدمة</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h3>عن عندك</h3>
+                        <ul class="footer-links">
+                            <li><a href="about.html">من نحن</a></li>
+                            <li><a href="careers.html">وظائف</a></li>
+                            <li><a href="press.html">المركز الإعلامي</a></li>
+                            <li><a href="blog.html">المدونة</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>الخدمات</h3>
+                        <ul class="footer-links">
+                            <li><a href="services.html#cleaning">خدمات التنظيف</a></li>
+                            <li><a href="services.html#moving">نقل العفش</a></li>
+                            <li><a href="services.html#maintenance">الصيانة المنزلية</a></li>
+                            <li><a href="services.html#carpentry">النجارة</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>الدعم</h3>
+                        <ul class="footer-links">
+                            <li><a href="help.html">الأسئلة الشائعة</a></li>
+                            <li><a href="contact.html">تواصل معنا</a></li>
+                            <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                            <li><a href="terms.html">الشروط والأحكام</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>تواصل معنا</h3>
+                        <ul class="footer-links">
+                            <li>البريد الإلكتروني: info@endak.com</li>
+                            <li>الهاتف: +966 12 345 6789</li>
+                            <li>العنوان: المملكة العربية السعودية</li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+                            </a>
+                            <a href="#" aria-label="Twitter">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path></svg>
+                            </a>
+                            <a href="#" aria-label="Instagram">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 011.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.153 1.772 4.915 4.915 0 01-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 01-1.772-1.153 4.904 4.904 0 01-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 011.153-1.772A4.897 4.897 0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 10-2.5 0 1.25 1.25 0 002.5 0zM12 9a3 3 0 110 6 3 3 0 010-6z"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2024 عندك. جميع الحقوق محفوظة</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="providers.js"></script>
+</body>
+</html> 

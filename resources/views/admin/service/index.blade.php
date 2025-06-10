@@ -19,7 +19,7 @@
              <th>{{__('admin.img')}}</th>
              <th>{{__('admin.name')}}</th>
              <th>{{__('admin.cat')}}</th>
-             <th>Action</th>
+             <th>{{__('admin.action')}}</th>
          </tr>
 
          @forelse($data as $item)

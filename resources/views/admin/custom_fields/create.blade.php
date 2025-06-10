@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1 class="h3 mb-4 text-gray-800">{{__('admin.create_F')}}</h1>
+<h1 class="h3 mb-4 text-gray-800">{{ __('admin.create_F') }}</h1>
 
 <form action="{{ route('admin.custome_fields.store') }}" method="POST">
     @csrf
@@ -14,43 +14,43 @@
         <select name="service_id" id="service_id" class="form-control @error('service_id') is-invalid @enderror" required>
             <option value="">{{ __('admin.choose_service') }}</option>
             @foreach ($services as $service)
-                <option value="{{ $service->id }}" {{ old('service_id') == $service->id ? 'selected' : '' }}>
-                    {{ $service->Trans_Name }}
-                </option>
+            <option value="{{ $service->id }}" {{ old('service_id') == $service->id ? 'selected' : '' }}>
+                {{ $service->Trans_Name }}
+            </option>
             @endforeach
         </select>
         @error('service_id')
-            <small class="invalid-feedback">{{ $message }}</small>
+        <small class="invalid-feedback">{{ $message }}</small>
         @enderror
     </div>
 
     <div class="form-group">
         <label for="label_en">{{ __('admin.label') }} En</label>
         <input type="text" name="label_en" id="label_en" value="{{ old('label_en') }}" required
-               class="form-control @error('label_en') is-invalid @enderror"
-               placeholder="{{ __('admin.placeholder_label_en') }}">
+            class="form-control @error('label_en') is-invalid @enderror"
+            placeholder="{{ __('admin.placeholder_label_en') }}">
         @error('label_en')
-            <small class="invalid-feedback">{{ $message }}</small>
+        <small class="invalid-feedback">{{ $message }}</small>
         @enderror
     </div>
 
     <div class="form-group">
         <label for="label_ar">{{ __('admin.label') }} Ar</label>
         <input type="text" name="label_ar" id="label_ar" value="{{ old('label_ar') }}" required
-               class="form-control @error('label_ar') is-invalid @enderror"
-               placeholder="{{ __('admin.placeholder_label_ar') }}">
+            class="form-control @error('label_ar') is-invalid @enderror"
+            placeholder="{{ __('admin.placeholder_label_ar') }}">
         @error('label_ar')
-            <small class="invalid-feedback">{{ $message }}</small>
+        <small class="invalid-feedback">{{ $message }}</small>
         @enderror
     </div>
 
     <div class="form-group">
         <label for="name">{{ __('admin.field_name') }}</label>
         <input type="text" name="name" id="name" value="{{ old('name') }}" required
-               class="form-control @error('name') is-invalid @enderror"
-               placeholder="{{ __('admin.placeholder_field_name') }}">
+            class="form-control @error('name') is-invalid @enderror"
+            placeholder="{{ __('admin.placeholder_field_name') }}">
         @error('name')
-            <small class="invalid-feedback">{{ $message }}</small>
+        <small class="invalid-feedback">{{ $message }}</small>
         @enderror
     </div>
 
@@ -68,16 +68,30 @@
             <option value="file" {{ old('type') == 'file' ? 'selected' : '' }}>File</option>
         </select>
         @error('type')
-            <small class="invalid-feedback">{{ $message }}</small>
+        <small class="invalid-feedback">{{ $message }}</small>
         @enderror
     </div>
 
     <div id="optionsContainer" style="display: none;">
         <label>{{ __('admin.options') }}</label>
-        <div id="optionsWrapper">
-            <input type="text" name="options[]" class="form-control mb-2" placeholder="{{ __('admin.placeholder_options') }}">
+
+        <div class="row">
+            <div class="col-md-6">
+                <strong>English</strong>
+                <div id="optionsEnWrapper">
+                    <input type="text" name="options_en[]" class="form-control mb-2" placeholder="{{ __('admin.placeholder_options') }} EN">
+                </div>
+                <button type="button" class="btn btn-sm btn-secondary mb-3" onclick="addOptionInput('en')">+ {{ __('admin.addOption') }} EN</button>
+            </div>
+
+            <div class="col-md-6">
+                <strong>العربية</strong>
+                <div id="optionsArWrapper">
+                    <input type="text" name="options_ar[]" class="form-control mb-2" placeholder="{{ __('admin.placeholder_options') }} AR">
+                </div>
+                <button type="button" class="btn btn-sm btn-secondary mb-3" onclick="addOptionInput('ar')">+ {{ __('admin.addOption') }} AR</button>
+            </div>
         </div>
-        <button type="button" class="btn btn-sm btn-secondary" onclick="addOptionInput()">+ {{ __('admin.addOption') }}</button>
     </div>
 
     <div class="form-group mt-3">
@@ -87,7 +101,7 @@
             <option value="0" {{ old('required') == '0' ? 'selected' : '' }}>{{ __('admin.no') }}</option>
         </select>
         @error('required')
-            <small class="invalid-feedback">{{ $message }}</small>
+        <small class="invalid-feedback">{{ $message }}</small>
         @enderror
     </div>
 
@@ -100,24 +114,31 @@
 
 @section('js')
 <script>
-    function addOptionInput() {
-        const wrapper = document.getElementById('optionsWrapper');
+    function addOptionInput(lang) {
+        const wrapperId = lang === 'en' ? 'optionsEnWrapper' : 'optionsArWrapper';
+        const wrapper = document.getElementById(wrapperId);
+
         const input = document.createElement('input');
         input.type = 'text';
-        input.name = 'options[]';
+        input.name = lang === 'en' ? 'options_en[]' : 'options_ar[]';
         input.className = 'form-control mb-2';
-        input.placeholder = "{{ __('admin.placeholder_options') }}";
+        input.placeholder = lang === 'en' ? "{{ __('admin.placeholder_options') }} EN" : "{{ __('admin.placeholder_options') }} AR";
+
         wrapper.appendChild(input);
     }
 
-    document.getElementById('type').addEventListener('change', function () {
+    document.getElementById('type').addEventListener('change', function() {
         const optionsContainer = document.getElementById('optionsContainer');
         if (['select', 'checkbox', 'radio'].includes(this.value)) {
             optionsContainer.style.display = 'block';
         } else {
             optionsContainer.style.display = 'none';
-            document.getElementById('optionsWrapper').innerHTML = `
-                <input type="text" name="options[]" class="form-control mb-2" placeholder="{{ __('admin.placeholder_options') }}">
+
+            document.getElementById('optionsEnWrapper').innerHTML = `
+                <input type="text" name="options_en[]" class="form-control mb-2" placeholder="{{ __('admin.placeholder_options') }} EN">
+            `;
+            document.getElementById('optionsArWrapper').innerHTML = `
+                <input type="text" name="options_ar[]" class="form-control mb-2" placeholder="{{ __('admin.placeholder_options') }} AR">
             `;
         }
     });

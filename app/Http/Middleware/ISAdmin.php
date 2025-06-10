@@ -17,10 +17,10 @@ class ISAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-           if (Auth::user()->type == 'user') {
-                  return redirect('/');
-             }
+        if (Auth::user()->type == 'customer' || Auth::user()->type == 'provider') {
+            return redirect('/');
+        }
 
-             return $next($request);
+        return $next($request);
     }
 }

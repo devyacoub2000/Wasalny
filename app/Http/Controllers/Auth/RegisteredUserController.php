@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -19,7 +20,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $categories = Category::select('id', 'name')->get();
+        return view('auth.register', compact('categories'));
     }
 
     /**
@@ -31,20 +33,37 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'lastname' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:18'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'type' => 'required|in:provider,customer',
+            'categories'  => 'required_if:type,provider|array',
+            'categories.*' => 'exists:categories,id',
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'lastname' => $request->lastname,
+            'phone' => $request->phone,
+            'type' => $request->type ?? 'customer',
             'password' => Hash::make($request->password),
         ]);
+
+        if ($request->type === 'provider') {
+            $user->categories()->sync($request->categories);
+        }
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        $auth = Auth::user()->type;
+        if ($auth == 'admin') {
+            return redirect(route('admin.index', absolute: false));
+        }
+
+        return redirect(route('front.index', absolute: false));
     }
 }

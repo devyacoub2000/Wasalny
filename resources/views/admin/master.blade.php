@@ -19,114 +19,123 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('back/css/sb-admin-2.min.css')}}" rel="stylesheet">
-@yield('css')
+    @yield('css')
 
- <style type="text/css">
-      
-       .colors {
-         width: 100px;
-         position: fixed;
-         right: -60px;
-         top: 100px;
-         display: flex;
-         transition: all 0.3s ease;
-       }
-       .colors.open {
-         right: 0px;
-       }
-       .colors button {
-           width: 40px;
-           height: 40px;
-           border: 0px;
-           background: #d9d9d9;
-       }
-       .colors ul {
-         list-style: none;
-         display: flex;
-         margin: 0;
-         padding: 0;
-         flex-wrap: wrap;
-         background: #e4e4e4;
-         width: 60px;
-         justify-content: center;
-         padding: 5px 0px;
-       }
-       .colors ul li {
-         width: 20px;
-         height:  20px;
-         margin: 3px; 
-         cursor: pointer;   
-       }
+    <style type="text/css">
+        .colors {
+            width: 100px;
+            position: fixed;
+            right: -60px;
+            top: 100px;
+            display: flex;
+            transition: all 0.3s ease;
+        }
 
-       .img-profile {
-          object-fit: cover;
-       }
+        .colors.open {
+            right: 0px;
+        }
 
- </style>
+        .colors button {
+            width: 40px;
+            height: 40px;
+            border: 0px;
+            background: #d9d9d9;
+        }
 
- 
-   @if(App::getlocale() == 'ar') 
-   
-      <style>
+        .colors ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+            background: #e4e4e4;
+            width: 60px;
+            justify-content: center;
+            padding: 5px 0px;
+        }
 
-        .topbar .dropdown .dropdown-menu  {
+        .colors ul li {
+            width: 20px;
+            height: 20px;
+            margin: 3px;
+            cursor: pointer;
+        }
+
+        .img-profile {
+            object-fit: cover;
+        }
+    </style>
+
+
+    @if(App::getlocale() == 'ar')
+
+    <style>
+        .topbar .dropdown .dropdown-menu {
             right: -60%;
         }
-         body {
+
+        body {
             direction: rtl;
             text-align: right;
-         }
-         .colors { 
+        }
+
+        .colors {
             right: unset;
             left: -60px;
-         }
-         .colors.open {
+        }
+
+        .colors.open {
             right: unset;
             left: 0px;
-         }
-         .sidebar {
-            padding: 0px;
-         }
-         .sidebar .nav-item .nav-link {
-                text-align: right;      
         }
-        .sidebar .nav-item .nav-link[data-toggle=collapse]::after {  
+
+        .sidebar {
+            padding: 0px;
+        }
+
+        .sidebar .nav-item .nav-link {
+            text-align: right;
+        }
+
+        .sidebar .nav-item .nav-link[data-toggle=collapse]::after {
             float: left;
             transform: rotate(180deg);
         }
-        .ml-auto, .mx-auto {
-             margin-left:  unset !important;
-             margin-right: auto !important;
+
+        .ml-auto,
+        .mx-auto {
+            margin-left: unset !important;
+            margin-right: auto !important;
         }
     </style>
-   
-   @endif
 
- 
+    @endif
+
+
 
 </head>
 
 <body id="page-top">
 
 
-     <div class="colors">
-         <button> <i class="fas fa-cog"></i></button>
-        
-         <ul>
-             <li class="bg-gradient-primary"></li>
-             <li class="bg-gradient-dark"></li>
-             <li class="bg-gradient-success"></li>
-             <li class="bg-gradient-info"></li>
-             <li class="bg-gradient-warning"></li>
-             <li class="bg-gradient-danger"></li>
-         </ul>
-         
-     </div>
+    <div class="colors">
+        <button> <i class="fas fa-cog"></i></button>
+
+        <ul>
+            <li class="bg-gradient-primary"></li>
+            <li class="bg-gradient-dark"></li>
+            <li class="bg-gradient-success"></li>
+            <li class="bg-gradient-info"></li>
+            <li class="bg-gradient-warning"></li>
+            <li class="bg-gradient-danger"></li>
+        </ul>
+
+    </div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-          @include('admin.sidebar')
+        @include('admin.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -146,23 +155,25 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                  <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <i class="fas fa-globe"></i> {{__('admin.langs')}}  </span>
-                            
-                        </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                            aria-labelledby="userDropdown">
-                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                         <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="dropdown-item"> 
-                          {{ $properties['native'] }}
-                          </a>
-                          @endforeach
-                      
-                          
-                    </li>
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <i class="fas fa-globe"></i> {{__('admin.langs')}} </span>
+
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <a rel="alternate" hreflang="{{ $localeCode }}"
+                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                                    class="dropdown-item">
+                                    {{ $properties['native'] }}
+                                </a>
+                                @endforeach
+
+
+                        </li>
 
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -189,10 +200,10 @@
                             </div>
                         </li>
 
-                     
 
 
-                     
+
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -204,13 +215,13 @@
                                     {{Auth::user()->name}}
                                 </span>
 
-                               @php 
-                                  if(Auth::user()->image) {
-                                    $src= asset('images/'.Auth::user()->image->path);
-                                  }else {
-                                    $src = 'https://ui-avatars.com/api/?background=random&name='.Auth::user()->name;
-                                  }
-                               @endphp
+                                @php
+                                if(Auth::user()->image) {
+                                $src= asset('images/'.Auth::user()->image->path);
+                                }else {
+                                $src = 'https://ui-avatars.com/api/?background=random&name='.Auth::user()->name;
+                                }
+                                @endphp
                                 <img class="img-profile rounded-circle"
                                     src="{{$src}}">
                             </a>
@@ -221,15 +232,15 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     {{__('admin.profiel')}}
                                 </a>
-                              
+
                                 <div class="dropdown-divider"></div>
-                                
-                                
-                                    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#logoutModal"> 
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>{{__('admin.out')}}
-                                    </a>
-                              
-                              
+
+
+                                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>{{__('admin.out')}}
+                                </a>
+
+
                             </div>
                         </li>
 
@@ -285,12 +296,12 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <form action="{{route('logout')}}" method="POST"> 
-                      @csrf
-                      <button class="btn btn-primary"> {{__('admin.out')}} </button>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button class="btn btn-primary"> {{__('admin.out')}} </button>
 
                     </form>
-                   
+
                 </div>
             </div>
         </div>
@@ -305,36 +316,28 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('back/js/sb-admin-2.min.js')}}"></script>
-    
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     @yield('js')
 
     <script type="text/javascript">
-         
-          document.querySelector('.colors button').onclick = () => {
-            
-              document.querySelector('.colors').classList.toggle('open');
-          } 
+        document.querySelector('.colors button').onclick = () => {
 
-          document.querySelectorAll('.colors ul li').forEach(el => {
-               el.onclick = () => {
-                let cl =  el.classList[0];
+            document.querySelector('.colors').classList.toggle('open');
+        }
+
+        document.querySelectorAll('.colors ul li').forEach(el => {
+            el.onclick = () => {
+                let cl = el.classList[0];
                 document.querySelector('#sidebar_color').className = '';
                 document.querySelector('#sidebar_color').classList.add(cl);
                 localStorage.setItem('cl', cl);
-              }
+            }
 
-          });
+        });
 
-          let oldclass = localStorage.getItem('cl')??'bg-gradient-primary';
-          document.querySelector('#sidebar_color').classList.add(oldclass);
-
-        
-             
-                       
-           
-          
-
+        let oldclass = localStorage.getItem('cl') ?? 'bg-gradient-primary';
+        document.querySelector('#sidebar_color').classList.add(oldclass);
     </script>
 </body>
 

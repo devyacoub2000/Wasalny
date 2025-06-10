@@ -20,6 +20,7 @@ return [
     'name' => 'الاسم',
     'img' => 'الصورة',
     'notFound' => 'لا توجد بيانات',
+    'notFound' => 'لا توجد خدمات',
     'save' => 'حفظ',
     'service' => 'الخدمات',
     'formFieldAdded' => 'تمت إضافة الحقل بنجاح',
@@ -44,7 +45,7 @@ return [
     'addOption' => 'إضافة خيار',
     'service' => 'الخدمة',
     'actions' => 'الإجراءات',
-    
+
     'placeholder_label_en' => 'أدخل التسمية باللغة الإنجليزية',
     'placeholder_label_ar' => 'أدخل التسمية باللغة العربية',
     'placeholder_field_name' => 'أدخل اسم الحقل',
@@ -53,4 +54,15 @@ return [
     'create_F' => 'انشاء حقل',
     'create_C' => 'انشاء قسم',
     'create_S' => 'انشاء خدمة',
+    'notFoundS' => 'لا يوجد خدمات',
+    'option_en' => 'الخيار بالانكليزي',
+    'option_ar' => 'الخيار بالعربي ',
+    'confirm_delete' => 'هل أنت متأكد ؟',
+    'orders' => 'الطلبات',
+    'customeName' => 'اسم الزبون',
+    'action' => 'اجراء',
+
+
+
+
 ];

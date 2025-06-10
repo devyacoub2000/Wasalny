@@ -1,47 +1,63 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('user.app')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('css')
+<style type="text/css">
+    .login {
+        cursor: pointer;
+        font-weight: bold;
+        letter-spacing: 2px;
+        font-size: 30px;
+    }
+</style>
+@endsection
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+@section('title', __('front.login'))
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+@section('content')
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+    <div class="card shadow-lg p-4 rounded" style="width: 100%; max-width: 450px;">
+        <h3 class="text-center mb-4 login">{{ __('front.login') }}</h3>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+        <x-auth-session-status class="mb-3" :status="session('status')" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">{{ __('front.email') }}</label>
+                <input id="email" type="email" name="email"
+                    class="form-control @error('email') is-invalid @enderror"
+                    value="{{ old('email') }}" placeholder="{{ __('front.email') }}">
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+                @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
+            <!-- Password -->
+            <div class="mb-3">
+                <label for="password" class="form-label">{{ __('front.password') }}</label>
+                <input id="password" type="password" name="password"
+                    class="form-control @error('password') is-invalid @enderror"
+                    placeholder="{{ __('front.password') }}" required autocomplete="current-password">
+
+                @error('password')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Submit -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-success">{{ __('front.login') }}</button>
+            </div>
+            <div class="text-center mt-3">
+                <a href="{{ route('register') }}">{{ __('front.notRegister') }} ?</a>
+            </div>
+
+    </div>
+
     </form>
-</x-guest-layout>
+</div>
+</div>
+@endsection
