@@ -17,7 +17,7 @@
                             </path>
                         </svg>
                     </div>
-                    <input placeholder="{{__('front.searchService')}}"
+                    <input id="searchInput" placeholder="{{__('front.searchService')}}"
                         class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#e7edf4] focus:border-none h-full placeholder:text-[#49739c] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
                         value="" />
                 </div>
@@ -28,13 +28,23 @@
             {{__('front.serSpechial')}}
         </h2>
 
-        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4" id="services-grid">
-            <!-- Services will be populated by JavaScript -->
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4" id="services-grid" style="display:none;">
+            @foreach(App\Models\Service::all() as $item)
+            <div class="service-item p-3 border rounded">
+                <a href="{{route('front.service_details', $item->id)}}">
+                    <h3 class="service-name"> {{$item->Trans_Name}} </h3>
+                </a>
+            </div>
+            @endforeach
+        </div>
+
+        <!-- رسالة لا توجد نتائج -->
+        <div id="no-results-message" class="p-3 px-4 text-center text-gray-600" style="display:none;">
+            {{__('front.error_Search')}}
         </div>
 
         <div class="@container">
-            <div
-                class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
+            <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
                 <div class="flex flex-col gap-2 text-center">
                     <h1
                         class="text-[#0d141c] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">
@@ -48,8 +58,6 @@
                     @guest
                     <div class="flex justify-center">
                         <a href="{{route('register')}}" class=" btn btn-success"> {{__('front.registerAsType')}}</a>
-
-
                     </div>
                     @endguest
                 </div>
@@ -58,4 +66,43 @@
     </div>
 </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const servicesGrid = document.getElementById('services-grid');
+        const serviceItems = servicesGrid.querySelectorAll('.service-item');
+        const noResultsMessage = document.getElementById('no-results-message');
+
+        searchInput.addEventListener('input', function() {
+            const filter = this.value.trim().toLowerCase();
+
+            if (filter === '') {
+                // لو مربع البحث فارغ، نخفي الخدمات والرسالة
+                servicesGrid.style.display = 'none';
+                noResultsMessage.style.display = 'none';
+                return;
+            }
+
+            let anyVisible = false;
+            serviceItems.forEach(item => {
+                const name = item.querySelector('.service-name').textContent.toLowerCase();
+                if (name.includes(filter)) {
+                    item.style.display = '';
+                    anyVisible = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (anyVisible) {
+                servicesGrid.style.display = 'grid'; // عرض الخدمات
+                noResultsMessage.style.display = 'none'; // إخفاء رسالة الخطأ
+            } else {
+                servicesGrid.style.display = 'none'; // إخفاء الخدمات
+                noResultsMessage.style.display = 'block'; // إظهار رسالة "لا توجد نتائج"
+            }
+        });
+    });
+</script>
 @endsection

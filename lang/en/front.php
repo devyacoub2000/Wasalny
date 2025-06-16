@@ -51,6 +51,7 @@ return [
     'notFoundOrders' => 'Not Found Orders',
     'date_order' => 'Order Date',
     'orders_providers' => 'The services related to your departments',
+    'error_Search' => 'This service does not exist.',
 
 
 

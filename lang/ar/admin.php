@@ -61,6 +61,8 @@ return [
     'orders' => 'الطلبات',
     'customeName' => 'اسم الزبون',
     'action' => 'اجراء',
+    'execl_file' => 'ملف اكسل',
+
 
 
 

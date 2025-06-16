@@ -6,9 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.9",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
-        "mcamara/laravel-localization": "^2.3"
+        "maatwebsite/excel": "3.1.62",
+        "mcamara/laravel-localization": "^2.3",
+        "twilio/sdk": "^8.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

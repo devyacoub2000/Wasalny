@@ -58,4 +58,5 @@ return [
     'orders' => 'Orders',
     'customeName' => 'Customer Name',
     'action' => 'Action',
+    'execl_file' => 'Excel File',
 ];

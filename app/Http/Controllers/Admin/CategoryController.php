@@ -36,10 +36,8 @@ class CategoryController extends Controller
             'name_en' => 'required',
             'name_ar' => 'required',
             'image' => 'required|image',
+            'execl_file' => 'nullable|file|mimes:xlsx,xls,csv',
         ]);
-
-
-        $data = $request->except('_token', 'image');
 
         $name = [
             'en' => $request->name_en,
@@ -50,18 +48,24 @@ class CategoryController extends Controller
             'name' => json_encode($name, JSON_UNESCAPED_UNICODE),
         ]);
 
-        $img = $request->File('image');
+        // رفع الصورة
+        $img = $request->file('image');
         $img_name = rand() . time() . $img->getClientOriginalName();
         $img->move(public_path('images'), $img_name);
-        $category->image()->create([
-            'path' => $img_name,
-        ]);
+        $category->image()->create(['path' => $img_name]);
 
+        // رفع ملف Excel
+        if ($request->hasFile('execl_file')) {
+            $excel_name = rand() . time() . '.' . $request->file('execl_file')->getClientOriginalExtension();
+            $request->file('execl_file')->move(public_path('excels'), $excel_name);
+            $category->update(['execl_file' => $excel_name]);
+        }
 
         return redirect()->route('admin.category.index')
             ->with('msg', __('admin.catAdd'))
             ->with('type', 'success');
     }
+
 
     /**
      * Display the specified resource.
@@ -87,10 +91,8 @@ class CategoryController extends Controller
         $request->validate([
             'name_en' => 'required',
             'name_ar' => 'required',
+            'execl_file' => 'nullable|file|mimes:xlsx,xls,csv',
         ]);
-
-
-        $data = $request->except('_token', 'image');
 
         $name = [
             'en' => $request->name_en,
@@ -101,24 +103,33 @@ class CategoryController extends Controller
             'name' => json_encode($name, JSON_UNESCAPED_UNICODE),
         ]);
 
+        // تحديث الصورة
         if ($request->hasFile('image')) {
             if ($category->image) {
                 File::delete(public_path('images/' . $category->image->path));
                 $category->image()->delete();
             }
-            $img = $request->File('image');
+            $img = $request->file('image');
             $img_name = rand() . time() . $img->getClientOriginalName();
             $img->move(public_path('images'), $img_name);
-            $category->image()->create([
-                'path' => $img_name,
-            ]);
+            $category->image()->create(['path' => $img_name]);
         }
 
+        // تحديث ملف Excel
+        if ($request->hasFile('execl_file')) {
+            if ($category->execl_file && File::exists(public_path('excels/' . $category->execl_file))) {
+                File::delete(public_path('excels/' . $category->execl_file));
+            }
+            $excel_name = rand() . time() . '.' . $request->file('execl_file')->getClientOriginalExtension();
+            $request->file('execl_file')->move(public_path('excels'), $excel_name);
+            $category->update(['execl_file' => $excel_name]);
+        }
 
         return redirect()->route('admin.category.index')
             ->with('msg', __('admin.catEdit'))
             ->with('type', 'info');
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -58,6 +58,7 @@ return [
   'notFoundOrders' => 'لا توجد طلبات',
   'date_order' => 'تاريخ الطلب',
   'orders_providers' => 'الخدمات المرتبطة في اقسامك',
+  'error_Search' => 'لا توجد هذه الخدمة !',
 
 
 
