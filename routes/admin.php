@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\CustomFieldController;
 
 
+
 Route::prefix(LaravelLocalization::setLocale())->middleware('auth', 'is_admin')->group(function () {
 
   Route::prefix('admin')->name('admin.')->group(function () {
@@ -25,6 +26,7 @@ Route::prefix(LaravelLocalization::setLocale())->middleware('auth', 'is_admin')-
 
     Route::get('orders', [AdminController::class, 'all_orders'])->name('all_orders');
 
-    Route::delete('delete_canecel/{id}', [AdminController::class, 'delete_canecel'])->name('delete_canecel');
+    Route::delete('delete_request_orders/{id}', [AdminController::class, 'delete_request_orders'])
+      ->name('delete_request_orders');
   });
 });

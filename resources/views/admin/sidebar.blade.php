@@ -13,30 +13,30 @@
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
-        <!-- Nav Item - Dashboard -->
+        <!-- Dashboard -->
         <li class="nav-item {{ request()->routeIs('admin.index') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.index') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-home"></i>
                 <span>{{ __('admin.dash') }}</span>
             </a>
         </li>
 
         <hr class="sidebar-divider my-0">
 
-        <!-- Nav Item - Dashboard -->
+        <!-- Orders -->
         <li class="nav-item {{ request()->routeIs('admin.all_orders') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.all_orders') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-receipt"></i>
                 <span>{{ __('admin.orders') }}</span>
             </a>
         </li>
 
         <hr class="sidebar-divider my-0">
 
-        <!-- Nav Item - Dashboard -->
+        <!-- Contact Us -->
         <li class="nav-item {{ request()->routeIs('admin.all_contacts') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.all_contacts') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-envelope-open-text"></i>
                 <span>{{ __('front.conactUs') }}</span>
             </a>
         </li>
@@ -44,11 +44,11 @@
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
-        <!-- Nav Item - Categories -->
+        <!-- Categories -->
         <li class="nav-item {{ request()->routeIs('admin.category.*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory"
                 aria-expanded="{{ request()->routeIs('admin.category.*') ? 'true' : 'false' }}" aria-controls="collapseCategory">
-                <i class="fas fa-fw fa-list"></i>
+                <i class="fas fa-folder-open"></i>
                 <span>{{ __('admin.cat') }}</span>
             </a>
             <div id="collapseCategory" class="collapse {{ request()->routeIs('admin.category.*') ? 'show' : '' }}"
@@ -64,11 +64,11 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Nav Item - Services -->
+        <!-- Services -->
         <li class="nav-item {{ request()->routeIs('admin.service.*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseService"
                 aria-expanded="{{ request()->routeIs('admin.service.*') ? 'true' : 'false' }}" aria-controls="collapseService">
-                <i class="fas fa-fw fa-concierge-bell"></i>
+                <i class="fas fa-tools"></i>
                 <span>{{ __('admin.service') }}</span>
             </a>
             <div id="collapseService" class="collapse {{ request()->routeIs('admin.service.*') ? 'show' : '' }}"
@@ -84,11 +84,11 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Nav Item - Fields -->
+        <!-- Custom Fields -->
         <li class="nav-item {{ request()->routeIs('admin.custome_fields.*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFields"
                 aria-expanded="{{ request()->routeIs('admin.custome_fields.*') ? 'true' : 'false' }}" aria-controls="collapseFields">
-                <i class="fas fa-fw fa-edit"></i>
+                <i class="fas fa-sliders-h"></i>
                 <span>{{ __('admin.fields') }}</span>
             </a>
             <div id="collapseFields" class="collapse {{ request()->routeIs('admin.custome_fields.*') ? 'show' : '' }}"
@@ -104,7 +104,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Sidebar Toggler (Sidebar) -->
+        <!-- Sidebar Toggler -->
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>

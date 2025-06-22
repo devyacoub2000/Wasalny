@@ -25,9 +25,9 @@ class AdminController extends Controller
         return view('admin.all_orders', compact('data'));
     }
 
-    public function delete_canecel($id)
+    public function delete_request_orders($id)
     {
-        $item = ServiceRequest::where('user_id', auth()->id())->findOrFail($id);
+        $item = ServiceRequest::findOrFail($id);
         $item->delete();
         return redirect()->back()->with('msg', __('front.orderDanger'))
             ->with('type', 'danger');

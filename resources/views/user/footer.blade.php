@@ -78,7 +78,7 @@
                 </li>
                 <li style="margin-top: 30px;">
                     {{ __('front.phone') }}:
-                    <a href="tel:+966123456789" style="color: #34d399;">+966 12 345 6789</a>
+                    <a href="tel:+966123456789" style="color: #34d399;">+966 56 840 1348</a>
                 </li>
                 <li style="margin-top: 30px;">
                     {{ __('front.address') }}: {{ __('front.ksa') }}

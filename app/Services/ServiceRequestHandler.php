@@ -11,10 +11,16 @@ class ServiceRequestHandler
     public function handleNewRequest(ServiceRequest $servicerequest)
     {
         $category = $servicerequest->service->category;
-        if (!$category->execl_file) return;
+
+        if (!$category->execl_file) {
+            return;
+        }
 
         $excelPath = public_path('excels/' . $category->execl_file);
-        if (!file_exists($excelPath)) return;
+
+        if (!file_exists($excelPath)) {
+            return;
+        }
 
         $collection = Excel::toCollection(null, $excelPath);
         $rows = $collection[0];
@@ -33,13 +39,9 @@ class ServiceRequestHandler
         foreach ($rows as $index => $row) {
             $phone = $row['phone'] ?? $row[0];
             if ($phone) {
-                // كل 3 أرقام بتأخير 5 دقائق
-                $delayMinutes = floor($index / 3) * 5;
-
-                // dispatch_sync(new SendWhatsappMessage($phone, $message));
-
-                SendWhatsappMessage::dispatch($phone, $message)
-                    ->delay(now()->addMinutes($delayMinutes));
+                $delaySeconds = $index * 180; // كل رسالة تأخير 15 ثانية
+                SendWhatsappMessage::dispatch($phone, $message, $index)
+                    ->delay(now()->addSeconds($delaySeconds));
             }
         }
     }

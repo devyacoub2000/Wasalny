@@ -32,10 +32,16 @@
       </div>
       <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
         <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#0d141c] text-base font-medium leading-normal pb-2"> {{__('front.email')}}</p>
+          <p class="text-[#0d141c] text-base font-medium leading-normal pb-2">
+            {{__('front.email')}}
+          </p>
           <input
             placeholder="{{__('front.enter')}} {{__('front.email')}}"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border border-[#cedbe8] bg-slate-50 focus:border-[#cedbe8] h-14 placeholder:text-[#49739c] p-[15px] text-base font-normal leading-normal"
+            class="form-input flex w-full min-w-0 flex-1 resize-none
+             overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 
+             focus:ring-0 border border-[#cedbe8] bg-slate-50 
+             focus:border-[#cedbe8] h-14 placeholder:text-[#49739c] p-[15px]
+              text-base font-normal leading-normal @error('email') is-invalid @enderror"
             value="{{old('email')}}" name="email" type="email" />
         </label>
         @error('email')

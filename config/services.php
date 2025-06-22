@@ -35,10 +35,27 @@ return [
         ],
     ],
 
-    'ultramsg' => [
-        'instance_id' => env('ULTRAMSG_INSTANCE_ID'),
-        'token' => env('ULTRAMSG_TOKEN'),
+
+
+    // ... الخدمات الأخرى ...
+
+    'ultramsg1' => [
+        'instance_id' => env('ULTRAMSG1_INSTANCE_ID'),
+        'token'       => env('ULTRAMSG1_TOKEN'),
     ],
+
+    'ultramsg2' => [
+        'instance_id' => env('ULTRAMSG2_INSTANCE_ID'),
+        'token'       => env('ULTRAMSG2_TOKEN'),
+    ],
+
+    'ultramsg3' => [
+        'instance_id' => env('ULTRAMSG3_INSTANCE_ID'),
+        'token'       => env('ULTRAMSG3_TOKEN'),
+    ],
+
+
+
 
 
 ];

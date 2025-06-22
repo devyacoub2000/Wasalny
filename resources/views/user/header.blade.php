@@ -59,7 +59,7 @@
 
             {{-- روابط التنقل --}}
             <a class="nav-link text-sm font-medium leading-normal {{ request()->is('/') ? 'text-green-600 font-bold border-b-2 border-green-600' : 'text-[#0d141c]' }}"
-                href="{{ url('/') }}">
+                href="{{route('front.index') }}">
                 {{ __('front.main') }}
             </a>
 
