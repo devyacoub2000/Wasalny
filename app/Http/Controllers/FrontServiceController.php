@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\SendWhatsappMessage;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use App\Models\Service;
 use App\Models\ServiceRequest;
-use App\Jobs\SendWhatsappJob; // هنستخدمه بعد شوي
+use App\Jobs\SendWhatsappMessage; // هنستخدمه بعد شوي
 use Illuminate\Http\Request;
 use App\Services\ServiceRequestHandler;
 
